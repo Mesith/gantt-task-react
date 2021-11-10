@@ -70,5 +70,10 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "@types/react-sortable-tree": "^0.3.14",
+    "react-sortable-tree": "^2.8.0",
+    "react-sortable-tree-theme-minimal": "0.0.14"
+  }
 }

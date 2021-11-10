@@ -27,6 +27,8 @@ export interface Task {
   project?: string;
   dependencies?: string[];
   hideChildren?: boolean;
+  parentId?: any;
+  title?: string;
 }
 
 export interface EventOption {
@@ -64,6 +66,8 @@ export interface EventOption {
    * Invokes on expander on task list
    */
   onExpanderClick?: (task: Task) => void;
+
+  onVisibilityChanged?: (data: any) => void;
 }
 
 export interface DisplayOption {

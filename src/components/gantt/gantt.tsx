@@ -23,7 +23,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   headerHeight = 50,
   columnWidth = 60,
   listCellWidth = "155px",
-  rowHeight = 50,
+  rowHeight = 62,
   ganttHeight = 0,
   viewMode = ViewMode.Day,
   locale = "en-GB",
@@ -56,6 +56,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   onDelete,
   onSelect,
   onExpanderClick,
+  onVisibilityChanged,
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const taskListRef = useRef<HTMLDivElement>(null);
@@ -143,6 +144,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     rtl,
     scrollX,
     onExpanderClick,
+    onVisibilityChanged,
   ]);
 
   useEffect(() => {
@@ -336,6 +338,12 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
       onExpanderClick({ ...task, hideChildren: !task.hideChildren });
     }
   };
+
+  const handleVisibilityChange = (task: any) => {
+    if (onVisibilityChanged) {
+      onVisibilityChanged(task);
+    }
+  };
   const gridProps: GridProps = {
     columnWidth,
     svgWidth,
@@ -394,6 +402,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     taskListRef,
     setSelectedTask: handleSelectedTask,
     onExpanderClick: handleExpanderClick,
+    onVisibilityChanged: handleVisibilityChange,
     TaskListHeader,
     TaskListTable,
   };
